@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix .",
-    "server:build": "webpack --config webpack.config.js"
+    "server:build": "webpack --config webpack.server.config.js",
+    "client:build": "webpack --config webpack.client.config.js",
+    "start": "cd dist && node server.bundle.js",
+    "build": "rm -rf dist/* && npm run client:build && npm run server:build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -20,8 +23,14 @@
   },
   "homepage": "https://github.com/prinzsunny/Portfolio#readme",
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
+    "babel-preset-react": "^6.24.1",
     "express": "^4.16.3",
-    "react": "^16.3.2"
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel-loader": "^7.1.4",
