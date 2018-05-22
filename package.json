@@ -6,11 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix ../Portfolio",
-    "server:build": "webpack --config webpack.server.config.js",
-    "client:build": "webpack-dev-server --config webpack.client.config.js",
-    "start": "cd dist && node server.bundle.js",
-    "build": "rm -rf dist/* && npm run client:build && npm run server:build && npm run start"
-  },
+    "start": "node server/server.js"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/prinzsunny/Portfolio.git"
