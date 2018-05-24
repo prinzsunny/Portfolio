@@ -1,13 +1,11 @@
-const path = require('path');
-
 const config = {
   entry: {
-    server: './server/server.js'
+    server: "./server/server.js"
   },
-  target: 'node',
-  mode:"development",
+  target: "node",
+  mode: "development",
   output: {
-    filename: '[name].bundle.js'
+    filename: "[name].bundle.js"
   },
 
   module: {
@@ -18,16 +16,16 @@ const config = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['env']
+            presets: ["env"]
           }
         }
       }
     ]
   },
-  devtool: 'inline-source-map',
-  node:{
-    __dirname:false
+  devtool: "inline-source-map",
+  node: {
+    __dirname: false
   }
-}
+};
 
 module.exports = config;

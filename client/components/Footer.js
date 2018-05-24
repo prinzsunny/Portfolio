@@ -1,11 +1,19 @@
-import React from 'react';
-import { List, ListItem } from "material-ui";
-
+import React from "react";
+import { Grid } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../../assets/styles/footer.css";
 
 const Footer = () => (
-  <footer>
-       <div> Sample Footer </div>
-  </footer>
+  <Grid>
+    <footer className="footer">
+      <div className="container">
+        <span>
+          <Link to="/contact">Contact</Link>
+        </span>&nbsp;|&nbsp;
+        <span>&copy; {new Date().getFullYear()} - Prince Mukka &nbsp; </span>
+      </div>
+    </footer>
+  </Grid>
 );
 
 export default Footer;

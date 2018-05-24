@@ -1,51 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import React from "react";
+import { Nav, Navbar, NavItem, Button, Jumbotron } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../../assets/styles/header.css";
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  flex: {
-    flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
+const Header = () => (
+  <div>
+    <Navbar inverse collapseOnSelect>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a href="/">Prince Mukka</a>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem eventKey={1}>
+            <Link to="/">Home</Link>
+          </NavItem>
+          <NavItem eventKey={2}>
+            <Link to="/resume">Resume</Link>
+          </NavItem>
+          <NavItem eventKey={3}>
+            <Link to="/blog">Blog</Link>
+          </NavItem>
+          <NavItem eventKey={4}>
+            <Link to="/photography">Photography</Link>
+          </NavItem>
+          <NavItem eventKey={4}>
+            <Link to="/resources">Resources</Link>
+          </NavItem>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  </div>
+);
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            Prince Mukka
-          </Typography>
-          <Button color="inherit">About me</Button>
-          <Button color="inherit">Resume</Button>
-          <Button color="inherit">Blog</Button>
-          <Button color="inherit">Photos</Button>
-          <Button color="inherit">Trips</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
-
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(ButtonAppBar);
+export default Header;
