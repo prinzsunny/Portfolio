@@ -9,7 +9,7 @@ import Blog from "./Blog";
 import Resources from "./Resources";
 import Contact from "./Contact";
 import HomePageLayoutRoute from "../layouts/HomePageLayout";
-import NoBannerLayoutRoute from "../layouts/NoBannerLayout" 
+import NoBannerLayoutRoute from "../layouts/NoBannerLayout";
 
 const Main = () => (
   <Grid>
