@@ -3,10 +3,19 @@ const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpackHotMiddleware = require("webpack-hot-middleware");
 const webpack = require("webpack");
 const path = require("path");
-const webpackConfig = require("../webpack.client.config.js");
+const mongoose = require("mongoose");
+const webpackConfig = require("../webpack.client.dev.js");
+const serverConfig = require('./config');
 
 const app = express();
 const compiler = webpack(webpackConfig);
+
+mongoose.connect(serverConfig.mongoURL, (error) => {
+  if (error) {
+    console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
+    throw error;
+  }
+});
 
 app.use(
   webpackDevMiddleware(compiler, {
