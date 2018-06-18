@@ -6,10 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix ../Portfolio",
-    "build:client": "webpack --config webpack.client.prod.js",
-    "build:server": "webpack --config webpack.server.config.js",
-    "build": "npm run build:server && npm run start",
-    "start": "node dist/server.bundle.js"
+    "bundle:client:dev": "webpack --config webpack.client.dev.js",
+    "bundle:client:prod": "webpack --config webpack.client.prod.js",
+    "bundle:server:dev": "webpack --config webpack.server.dev.js",
+    "bundle:server:prod": "webpack --config webpack.server.prod.js",
+    "build:dev": "npm run bundle:server:dev && npm run start",
+    "build:prod": "npm run bundle:client:prod && npm run bundle:server:prod",
+    "start": " node dist/server.bundle.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   "homepage": "https://github.com/prinzsunny/Portfolio#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "cross-env": "^5.2.0",
     "express": "^4.16.3",
     "mongoose": "^5.1.4",
     "react": "^16.3.2",

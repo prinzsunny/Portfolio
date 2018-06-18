@@ -4,38 +4,39 @@ const webpackHotMiddleware = require("webpack-hot-middleware");
 const webpack = require("webpack");
 const path = require("path");
 const mongoose = require("mongoose");
-const webpackConfig = require("../webpack.client.dev.js");
-const serverConfig = require('./config');
+const serverConfig = require("./config");
 
 const app = express();
-const compiler = webpack(webpackConfig);
 
-mongoose.connect(serverConfig.mongoURL, (error) => {
+mongoose.connect(serverConfig.mongoURL, error => {
   if (error) {
-    console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
+    console.error("Please make sure Mongodb is installed and running!"); // eslint-disable-line no-console
     throw error;
   }
 });
 
-app.use(
-  webpackDevMiddleware(compiler, {
-    hot: true,
-    filename: "client.bundle.js",
-    publicPath: "/",
-    stats: {
-      colors: true
-    },
-    historyApiFallback: true
-  })
-);
-
-app.use(
-  webpackHotMiddleware(compiler, {
-    log: console.log,
-    path: "/__webpack_hmr",
-    heartbeat: 10 * 1000
-  })
-);
+if (process.env.NODE_ENV  && process.env.NODE_ENV === "development") {
+  const webpackConfig = require("../webpack.client.dev.js");
+  const compiler = webpack(webpackConfig);
+  app.use(
+    webpackDevMiddleware(compiler, {
+      hot: true,
+      filename: "client.bundle.js",
+      publicPath: "/",
+      stats: {
+        colors: true
+      },
+      historyApiFallback: true
+    })
+  );
+  app.use(
+    webpackHotMiddleware(compiler, {
+      log: console.log,
+      path: "/__webpack_hmr",
+      heartbeat: 10 * 1000
+    })
+  );
+}
 
 app.get("/", (req, res) => {
   console.log(__dirname);

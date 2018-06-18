@@ -69,6 +69,9 @@ const config = {
       Popper: "popper.js",
       Util: "exports-loader?Util!bootstrap/js/dist/util"
     }),
+    new webpack.DefinePlugin({
+     'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new MiniCssExtractPlugin({
       filename: "style.[contenthash].css"
     }),
